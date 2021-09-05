@@ -1,18 +1,22 @@
-import { useState } from "react";
-import NewButton from "./NewButton";
-import { Row, Col } from "react-bootstrap";
+import { useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
+
+// Components
+import NewButton from './NewButton';
+
 
 const RandomImages = () => {
     const [image, setImage] = useState(null);
     const [error, setError] = useState(null);
+    const api = 'https://source.unsplash.com/random';
 
-    const handleShowImage = () => {
-        fetch('https://source.unsplash.com/random')
-            .then(res => {
-                setImage(res.url)
-            }) 
+    const handleShowImage = (url) => {
+        fetch(url)
+            .then(res => setImage(res.url))
             .catch(err => setError(err))
     }
+
+    const clearShowImage = () => setImage(null);
 
     return (
         <>
@@ -22,7 +26,12 @@ const RandomImages = () => {
                 <NewButton
                     name='Generate Image'
                     color='primary'
-                    func={handleShowImage}
+                    func={() => handleShowImage(api)}
+                />
+                <NewButton
+                    name='Clear Image'
+                    color='secondary'
+                    func={clearShowImage}
                 />
                 </Col>
             </Row>
@@ -32,9 +41,12 @@ const RandomImages = () => {
                         <img 
                             src={image}
                             className='w-25 h-25'
-                            alt='random image'
+                            alt='something cool'
                         /> :
-                            <p>Sorry an error occurred, please try again.</p>
+                            null
+                }
+                {
+                    error ? <p>Sorry an error occurred, please try again.</p> : null
                 }
             </Row>
         </>
