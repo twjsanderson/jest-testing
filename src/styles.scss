@@ -1,8 +1,20 @@
 /* make the customizations */
 $theme-colors: (
-        "info": tomato,
-        "danger": teal
+        "primary": rgb(22, 211, 85),
+        "secondary": tomato
 );
+
+// background color 
+$body-bg: rgb(240, 240, 240);
+
+// text color
+// $body-color: rgb(209, 25, 25);
+
+// You can override specific variables
+$white: blue;
+
+
+
 
 /* import bootstrap to set changes */
 @import "../node_modules/bootstrap/scss/bootstrap";
