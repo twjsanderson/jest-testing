@@ -26,7 +26,9 @@ function App() {
         />
       </div>
       <div className='randomImages'>
-        <RandomImages />
+        <RandomImages 
+          api={'https://source.unsplash.com/random'}
+        />
       </div>
     </div>
   );
