@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import DisplayImage from './DisplayImage';
 
 // Components
 import NewButton from './NewButton';
@@ -34,18 +35,10 @@ const RandomImages = ({ api }) => {
                 </Col>
             </Row>
             <Row>
-                {
-                    image && error === null ? 
-                        <img 
-                            src={image}
-                            className='w-25 h-25'
-                            alt='something cool'
-                        /> :
-                            null
-                }
-                {
-                    error ? <p>Sorry an error occurred, please try again.</p> : null
-                }
+                <DisplayImage 
+                    image={image} 
+                    error={error} 
+                />
             </Row>
         </>
     )
